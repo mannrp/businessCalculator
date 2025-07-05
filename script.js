@@ -32,6 +32,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const partnerCount2 = document.getElementById('partnerCount2');
     const netCashPerPartner = document.getElementById('netCashPerPartner');
 
+    function formatCurrency(amount) {
+        return new Intl.NumberFormat('en-US', {
+            style: 'currency',
+            currency: 'USD',
+            minimumFractionDigits: 0,
+            maximumFractionDigits: 0
+        }).format(amount);
+    }
+
+    function formatNumber(amount) {
+        return new Intl.NumberFormat('en-US', {
+            minimumFractionDigits: 2,
+            maximumFractionDigits: 2
+        }).format(amount);
+    }
+
     function calculate() {
         // Store Profit - direct entry only
         const calculatedStoreProfit = parseFloat(storeProfit.value) || 0;
@@ -44,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Store + Gas Gross Profit
         const storeGasTotal = calculatedStoreProfit + calculatedGasProfit;
-        if (storeGasGrossProfit) storeGasGrossProfit.textContent = storeGasTotal.toFixed(2);
+        if (storeGasGrossProfit) storeGasGrossProfit.textContent = formatCurrency(storeGasTotal);
 
         // Expenses
         let totalExpenses = 0;
@@ -87,15 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Summary
         const totalGrossProfit = calculatedStoreProfit + calculatedGasProfit;
-        grossProfit.textContent = totalGrossProfit.toFixed(2);
+        grossProfit.textContent = formatCurrency(totalGrossProfit);
 
         const annualMortgagePayment = mortgagePaymentValue * 12;
         const grossProfitAfterMortgage = totalGrossProfit - annualMortgagePayment;
-        grossProfitAfterTax.textContent = grossProfitAfterMortgage.toFixed(2);
+        grossProfitAfterTax.textContent = formatCurrency(grossProfitAfterMortgage);
 
         const annualTermLoanPayment = termLoanPaymentValue * 12;
         const finalCashInHand = grossProfitAfterMortgage - totalExpenses - annualTermLoanPayment;
-        cashInHand.textContent = finalCashInHand.toFixed(2);
+        cashInHand.textContent = formatCurrency(finalCashInHand);
 
         // Tax Planning
         const numberOfPartnersValue = parseFloat(numberOfPartners.value) || 1;
@@ -106,13 +122,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const salaryPerPartnerAmount = finalCashInHand / numberOfPartnersValue;
         const netCashPerPartnerAmount = netCashAfterTaxAmount / numberOfPartnersValue;
 
-        corporateTax.textContent = corporateTaxAmount.toFixed(2);
-        dividendTax.textContent = dividendTaxAmount.toFixed(2);
-        netCashAfterTax.textContent = netCashAfterTaxAmount.toFixed(2);
-        salaryPerPartner.textContent = salaryPerPartnerAmount.toFixed(2);
+        corporateTax.textContent = formatCurrency(corporateTaxAmount);
+        dividendTax.textContent = formatCurrency(dividendTaxAmount);
+        netCashAfterTax.textContent = formatCurrency(netCashAfterTaxAmount);
+        salaryPerPartner.textContent = formatCurrency(salaryPerPartnerAmount);
         if (partnerCount) partnerCount.textContent = numberOfPartnersValue;
         if (partnerCount2) partnerCount2.textContent = numberOfPartnersValue;
-        if (netCashPerPartner) netCashPerPartner.textContent = netCashPerPartnerAmount.toFixed(2);
+        if (netCashPerPartner) netCashPerPartner.textContent = formatCurrency(netCashPerPartnerAmount);
     }
 
     function addExpenseField() {

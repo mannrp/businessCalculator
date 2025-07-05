@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Cash In Hand Calculator</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
-        <h1>Business Cash In Hand Calculator</h1>
+        <h1>Business Cash Calculator</h1>
 
         <div class="section">
             <h2>Store</h2>
@@ -165,7 +166,7 @@
                 <label for="numberOfPartners">Number of Partners</label>
                 <input type="number" id="numberOfPartners" value="3">
             </div>
-            <div style="margin-bottom: 20px;">
+            <div class="tax-option">
                 <h3>Option 1: Corporate Structure</h3>
                 <div class="output-group">
                     <label>Corporate Tax (11% on Cash In Hand)</label>
@@ -175,7 +176,7 @@
                     <label>Dividend Tax (11% on remaining after corp tax)</label>
                     <span id="dividendTax"></span>
                 </div>
-                <div class="output-group">
+                <div class="output-group highlight">
                     <label><strong>Net Cash After Corp & Dividend Tax</strong></label>
                     <span id="netCashAfterTax"></span>
                 </div>
@@ -184,9 +185,9 @@
                     <span id="netCashPerPartner"></span>
                 </div>
             </div>
-            <div style="margin-bottom: 20px;">
+            <div class="tax-option">
                 <h3>Option 2: Salary Distribution</h3>
-                <div class="output-group">
+                <div class="output-group highlight">
                     <label>Salary Per Partner (Cash In Hand ÷ <span id="partnerCount2">3</span>)</label>
                     <span id="salaryPerPartner"></span>
                 </div>
