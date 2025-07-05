@@ -1,0 +1,90 @@
+body {
+    font-family: sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1, h2 {
+    text-align: center;
+    color: #0056b3;
+}
+
+.section {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.input-group, .output-group {
+    margin-bottom: 15px;
+}
+
+.input-group label, .output-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input, .output-group span {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.output-group span {
+    background-color: #eee;
+    font-weight: bold;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004494;
+}
+
+.expense-item {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.expense-item input {
+    margin-right: 10px;
+}
+
+.expense-item .expense-name {
+    flex-grow: 1;
+}
+
+.loan-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.loan-details > div {
+    width: 48%;
+}
+
+#termLoanPercentValue {
+    font-weight: bold;
+    margin-left: 10px;
+}

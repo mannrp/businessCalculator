@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Cash In Hand Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Business Cash In Hand Calculator</h1>
+
+        <div class="section">
+            <h2>Store</h2>
+            <div class="input-group">
+                <label for="storeProfit">Store Profit</label>
+                <input type="number" id="storeProfit" value="430858">
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Gas</h2>
+            <div class="input-group">
+                <label for="gasVolume">Gas Volume (Liters) <span style='font-size:0.9em;color:#666;'>(2023 volume)</span></label>
+                <input type="number" id="gasVolume" value="3315309">
+            </div>
+            <div class="input-group">
+                <label for="cplMargin">Cents Per Liter Margin</label>
+                <input type="number" id="cplMargin" value="7">
+            </div>
+            <div class="input-group">
+                <label for="gasProfit">Gas Profit</label>
+                <input type="number" id="gasProfit" readonly>
+            </div>
+            <div class="output-group">
+                <label>Total Store + Gas Gross Profit</label>
+                <span id="storeGasGrossProfit"></span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Expenses</h2>
+            <div id="expenses-list">
+                <div class="expense-item">
+                    <input type="text" value="Salaries" class="expense-name">
+                    <input type="number" value="120000" class="expense-amount">
+                    <button class="remove-expense">Remove</button>
+                </div>
+                <div class="expense-item">
+                    <input type="text" value="Rent" class="expense-name">
+                    <input type="number" value="222000" class="expense-amount">
+                    <button class="remove-expense">Remove</button>
+                </div>
+                <div class="expense-item">
+                    <input type="text" value="CC" class="expense-name">
+                    <input type="number" value="39447" class="expense-amount">
+                    <button class="remove-expense">Remove</button>
+                </div>
+                <div class="expense-item">
+                    <input type="text" value="Utilities" class="expense-name">
+                    <input type="number" value="38300" class="expense-amount">
+                    <button class="remove-expense">Remove</button>
+                </div>
+                <div class="expense-item">
+                    <input type="text" value="Repairs/Maintenance" class="expense-name">
+                    <input type="number" value="28425" class="expense-amount">
+                    <button class="remove-expense">Remove</button>
+                </div>
+                <div class="expense-item">
+                    <input type="text" value="Biz tax, license,etc" class="expense-name">
+                    <input type="number" value="12142" class="expense-amount">
+                    <button class="remove-expense">Remove</button>
+                </div>
+                <div class="expense-item">
+                    <input type="text" value="Insurance" class="expense-name">
+                    <input type="number" value="5309" class="expense-amount">
+                    <button class="remove-expense">Remove</button>
+                </div>
+            </div>
+            <button id="add-expense">Add Expense</button>
+        </div>
+
+        <div class="section">
+            <h2>Pre-Tax Loan (Mortgage)</h2>
+            <div class="input-group">
+                <label for="purchasePrice">Purchase Price</label>
+                <input type="number" id="purchasePrice" value="675000">
+            </div>
+            <div class="input-group">
+                <label for="loanPercent">Loan Amount %</label>
+                <input type="number" id="loanPercent" value="65" step="1">
+            </div>
+            <div class="input-group">
+                <label for="loanAmount">Loan Amount</label>
+                <input type="number" id="loanAmount" value="438750" readonly>
+            </div>
+            <div class="input-group">
+                <label for="interestRate">Interest Rate %</label>
+                <input type="number" id="interestRate" value="8" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="loanTerm">Term (Years)</label>
+                <input type="number" id="loanTerm" value="10">
+            </div>
+            <div class="input-group">
+                <label for="mortgagePayment">Monthly Payment</label>
+                <input type="number" id="mortgagePayment" readonly>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Post-Tax Loan (Inventory)</h2>
+            <div class="input-group">
+                <label for="inventoryAmount">Total Inventory Amount</label>
+                <input type="number" id="inventoryAmount" value="200000">
+            </div>
+            <div class="input-group">
+                <label for="termLoanPercent">Term Loan %</label>
+                <input type="range" id="termLoanPercent" min="0" max="100" value="100">
+                <span id="termLoanPercentValue">100%</span>
+            </div>
+            <div class="loan-details">
+                <div>
+                    <h3>Term Loan</h3>
+                    <label for="termLoanAmount">Amount</label>
+                    <input type="number" id="termLoanAmount" readonly>
+                    <div class="input-group">
+                        <label for="termLoanTerm">Term (Years)</label>
+                        <input type="number" id="termLoanTerm" value="5">
+                    </div>
+                    <div class="input-group">
+                        <label for="termLoanRate">Interest Rate %</label>
+                        <input type="number" id="termLoanRate" value="10" step="0.1">
+                    </div>
+                    <label for="termLoanPayment">Monthly Payment</label>
+                    <input type="number" id="termLoanPayment" readonly>
+                </div>
+                <div>
+                    <h3>Revolving Credit</h3>
+                    <label for="revolvingCreditAmount">Amount</label>
+                    <input type="number" id="revolvingCreditAmount" readonly>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Summary</h2>
+            <div class="output-group">
+                <label>Gross Profit</label>
+                <span id="grossProfit"></span>
+            </div>
+            <div class="output-group">
+                <label>Gross Profit After Pre-Tax Loans</label>
+                <span id="grossProfitAfterTax"></span>
+            </div>
+            <div class="output-group">
+                <label>Cash In Hand (Post-Tax)</label>
+                <span id="cashInHand"></span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Tax Planning</h2>
+            <div class="input-group">
+                <label for="numberOfPartners">Number of Partners</label>
+                <input type="number" id="numberOfPartners" value="3">
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h3>Option 1: Corporate Structure</h3>
+                <div class="output-group">
+                    <label>Corporate Tax (11% on Cash In Hand)</label>
+                    <span id="corporateTax"></span>
+                </div>
+                <div class="output-group">
+                    <label>Dividend Tax (11% on remaining after corp tax)</label>
+                    <span id="dividendTax"></span>
+                </div>
+                <div class="output-group">
+                    <label><strong>Net Cash After Corp & Dividend Tax</strong></label>
+                    <span id="netCashAfterTax"></span>
+                </div>
+                <div class="output-group">
+                    <label>Per Partner Share (÷ <span id="partnerCount">3</span>)</label>
+                    <span id="netCashPerPartner"></span>
+                </div>
+            </div>
+            <div style="margin-bottom: 20px;">
+                <h3>Option 2: Salary Distribution</h3>
+                <div class="output-group">
+                    <label>Salary Per Partner (Cash In Hand ÷ <span id="partnerCount2">3</span>)</label>
+                    <span id="salaryPerPartner"></span>
+                </div>
+                <div class="output-group">
+                    <label><em>Note: Subject to personal income tax rates</em></label>
+                    <span style="font-style: italic;">Varies by province & income bracket</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
